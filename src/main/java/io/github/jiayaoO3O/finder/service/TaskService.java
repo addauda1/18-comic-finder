@@ -87,7 +87,7 @@ public class TaskService {
             }
             //获取章节id
             String id = StrUtil.subAfter(url, '/', true);
-            log.info("参数id:{},name:{},url:{}",id,name.url);
+            log.info("参数id:{},name:{},url:{}",id,name,url);
             if(StrUtil.hasEmpty(id, name, url)) {
                 //对于单章漫画, 存在为空的情况直接退出程序了
                 log.error(StrUtil.format("获取章节信息失败->解析漫画url/name/id为空,程序退出"));
@@ -115,7 +115,7 @@ public class TaskService {
             while(StrUtil.endWith(name, '.')) {
                 name = StrUtil.removeSuffix(name, ".");
             }
-            log.info("参数id:{},name:{},url:{}",id,name.url);
+            log.info("参数id:{},name:{},url:{}",id,name,url);
             if(StrUtil.hasEmpty(id, name, url)) {
                 //对于多章漫画, 存在为空数据直接跳过这一章
                 log.error(StrUtil.format("获取章节信息失败->解析漫画url/name/id为空,跳过本章节"));
