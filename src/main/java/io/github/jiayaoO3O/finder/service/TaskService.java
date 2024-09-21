@@ -87,6 +87,7 @@ public class TaskService {
             }
             //获取章节id
             String id = StrUtil.subAfter(url, '/', true);
+            log.info("参数id:{},name:{},url:{}",id,name.url);
             if(StrUtil.hasEmpty(id, name, url)) {
                 //对于单章漫画, 存在为空的情况直接退出程序了
                 log.error(StrUtil.format("获取章节信息失败->解析漫画url/name/id为空,程序退出"));
