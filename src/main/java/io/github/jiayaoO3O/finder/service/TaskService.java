@@ -79,6 +79,7 @@ public class TaskService {
             if(StrUtil.isEmpty(url)) {
                 url = StrUtil.subBetween(StrUtil.subBetween(body, ">收藏<", "開始閱讀"), "href=\"", "\"");
             }
+            log.info("参数body:"+body);
             //获取章节名称
             var name = StrUtil.removeAny(StrUtil.splitTrim(this.removeIllegalCharacter(StrUtil.subBetween(body, "<h1>", "</h1>")), " ")
                     .toString(), "[", "]", ",");
@@ -87,7 +88,9 @@ public class TaskService {
             }
             //获取章节id
             String id = StrUtil.subAfter(url, '/', true);
-            log.info("参数id:{},name:{},url:{}",id,name,url);
+            log.info("参数1id:"+id);
+            log.info("参数1name:"+name);
+            log.info("参数1url:"+url);
             if(StrUtil.hasEmpty(id, name, url)) {
                 //对于单章漫画, 存在为空的情况直接退出程序了
                 log.error(StrUtil.format("获取章节信息失败->解析漫画url/name/id为空,程序退出"));
@@ -115,7 +118,9 @@ public class TaskService {
             while(StrUtil.endWith(name, '.')) {
                 name = StrUtil.removeSuffix(name, ".");
             }
-            log.info("参数id:{},name:{},url:{}",id,name,url);
+            log.info("参数id:"+id);
+            log.info("参数name:"+name);
+            log.info("参数url:"+url);
             if(StrUtil.hasEmpty(id, name, url)) {
                 //对于多章漫画, 存在为空数据直接跳过这一章
                 log.error(StrUtil.format("获取章节信息失败->解析漫画url/name/id为空,跳过本章节"));
